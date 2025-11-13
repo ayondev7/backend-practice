@@ -1,0 +1,64 @@
+// This is your Prisma schema file
+// Learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/**
+ * User Model for PostgreSQL
+ * This represents the 'users' table in your database
+ * 
+ * Field Types:
+ * - Int: Integer numbers
+ * - String: Text data
+ * - DateTime: Date and time
+ * - Boolean: true/false
+ * 
+ * Decorators:
+ * - @id: Primary key
+ * - @default(autoincrement()): Auto-incrementing ID
+ * - @unique: Ensures no duplicates
+ * - @default(now()): Sets current timestamp
+ * - @updatedAt: Automatically updates on record change
+ * - ?: Makes field optional (nullable)
+ */
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  age       Int?
+  role      String   @default("USER")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users") // Maps to 'users' table in database
+}
+
+/**
+ * TODO: Add more models as you practice
+ * Examples:
+ * 
+ * model Product {
+ *   id          Int      @id @default(autoincrement())
+ *   name        String
+ *   description String?
+ *   price       Float
+ *   stock       Int      @default(0)
+ *   categoryId  Int
+ *   category    Category @relation(fields: [categoryId], references: [id])
+ *   createdAt   DateTime @default(now())
+ *   updatedAt   DateTime @updatedAt
+ * }
+ * 
+ * model Category {
+ *   id       Int       @id @default(autoincrement())
+ *   name     String    @unique
+ *   products Product[]
+ * }
+ */

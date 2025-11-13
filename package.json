@@ -1,0 +1,25 @@
+{
+  "name": "backend-practice-express",
+  "version": "1.0.0",
+  "description": "Express.js practice project with Prisma (PostgreSQL) and Mongoose (MongoDB)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["express", "prisma", "mongoose", "postgresql", "mongodb"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5",
+    "mongoose": "^8.0.3",
+    "@prisma/client": "^5.7.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "prisma": "^5.7.1"
+  }
+}
